@@ -1,10 +1,17 @@
 import { ILoggerBuilderProps, IMessageParams } from './types';
 
-// Refactor method
 export const MessageGetter = (messageParams: IMessageParams, props: ILoggerBuilderProps): string => {
   const profile = getProfile(props);
+  const { message, interUseCase, useCase, logLevel } = { ...props, ...messageParams };
+  const logInfos = [];
 
-  return messageFromParams(messageParams, props, profile);
+  profile && logInfos.push(`[${profile}]`);
+  useCase && logInfos.push(`[${[useCase]}]`);
+  interUseCase && logInfos.push(`[${[interUseCase]}]`);
+
+  const logInfosString = logInfos.filter(Boolean).join('');
+
+  return [logInfosString, `[${logLevel}] ${message}`].join(' - ');
 };
 
 const getProfile = (props: ILoggerBuilderProps) => {
@@ -12,19 +19,4 @@ const getProfile = (props: ILoggerBuilderProps) => {
 
   if (!serviceName) return;
   return serviceVersion ? `${serviceName}@${serviceVersion}` : serviceName;
-};
-
-const messageFromParams = (messageParams: IMessageParams, params: ILoggerBuilderProps, profile?: string) => {
-  const configs = { ...params, ...messageParams };
-  const { message, interUseCase, useCase, logLevel } = configs;
-  let infos = [];
-
-  if (profile) infos.push(`[${profile}]`);
-  if (interUseCase || useCase) infos.push(`[${[useCase, interUseCase].filter(Boolean).join(' - ')}]`);
-
-  const infosString = infos.filter(Boolean).join('');
-  infos = [];
-  infos.push(infosString, `[${logLevel}]`, message);
-
-  return infos.join(' - ');
 };

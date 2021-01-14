@@ -1,6 +1,6 @@
 {
   "name": "@zigtech/logger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": "true",
   "description": "Simple logs API for your daily process.",
   "keywords": [
