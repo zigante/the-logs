@@ -1,0 +1,64 @@
+env:
+  es6: true
+  node: true
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 2017
+  sourceType: module
+rules:
+  brace-style: error
+  no-console: 'off'
+  block-spacing: error
+  arrow-spacing: error
+  camelcase: error
+  comma-style: error
+  no-extra-boolean-cast: 'off'
+  complexity:
+    - error
+    - max: 8
+  dot-notation: error
+  eqeqeq: error
+  eol-last: error
+  key-spacing: error
+  keyword-spacing: error
+  max-depth: error
+  max-len:
+    - error
+    - code: 120
+      ignoreComments: true
+  max-nested-callbacks:
+    - error
+    - max: 3
+  max-params:
+    - error
+    - max: 4
+  no-shadow: 'off'
+  no-var: error
+  no-return-await: error
+  no-trailing-spaces: error
+  no-whitespace-before-property: error
+  quotes:
+    - error
+    - single
+    - allowTemplateLiterals: true
+  semi: error
+  space-in-parens:
+    - error
+    - never
+  '@typescript-eslint/explicit-function-return-type': 'off'
+  '@typescript-eslint/interface-name-prefix': 'off'
+  '@typescript-eslint/explicit-module-boundary-types': 'off'
+  '@typescript-eslint/ban-types': 'off'
+  '@typescript-eslint/no-shadow': 'error'
+  '@typescript-eslint/no-unused-vars':
+    - error
+    - argsIgnorePattern: '^_'
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+plugins:
+  - prettier

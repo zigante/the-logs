@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.paths.json",
+  "compilerOptions": {
+    "target": "ES6",
+    "removeComments": false,
+    "moduleResolution": "Node",
+    "module": "CommonJS",
+    "alwaysStrict": true,
+    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "pretty": true,
+    "experimentalDecorators": true,
+    "outDir": "build",
+    "allowJs": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "lib": ["ES6"]
+  },
+  "exclude": ["node_modules/**/*", ".serverless/**/*", ".webpack/**/*", "_warmup/**/*", ".vscode/**/*", "dist/**/*"]
+}

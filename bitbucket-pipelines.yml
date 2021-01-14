@@ -1,0 +1,60 @@
+image:
+  name: node:12-buster
+
+definitions:
+  steps:
+    - step: &setup
+        name: Installing dependencies
+        caches:
+          - node
+        artifacts:
+          - node_modules/**
+        script:
+          - npm install
+    - step: &build
+        name: Linting and building
+        artifacts:
+          - dist/**
+          - build/**
+        script:
+          - npm run lint
+          - npm run build
+    - step: &test
+        name: Testing
+        script:
+          - npm run test
+    - step: &publish_serverless
+        name: Publishing Serverless
+        script:
+          - echo "Publishing serverless applications at ${STAGE}"
+    - step: &publish_container
+        name: Publishing Containers
+        script:
+          - echo "Publishing container applications at ${STAGE}"
+
+pipelines:
+  default:
+    - step: *setup
+    - step: *build
+    - step: *test
+  branches:
+    staging:
+      - step: *setup
+      - step: *build
+      - step: *test
+      - step:
+          <<: *publish_serverless
+          deployment: Staging
+      - step:
+          <<: *publish_container
+          deployment: Staging
+    stable:
+      - step: *setup
+      - step: *build
+      - step: *test
+      - step:
+          <<: *publish_serverless
+          deployment: Stable
+      - step:
+          <<: *publish_container
+          deployment: Stable
