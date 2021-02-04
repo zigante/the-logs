@@ -1,5 +1,5 @@
-import { MessageGetter } from '@/MessageGetter';
 import chalk from 'chalk';
+import { MessageGetter } from '../MessageGetter';
 import { ILoggerBuilderProps, IMessageParams, IWriter, LogLevel } from '../types';
 
 export class ConsoleWriter implements IWriter {

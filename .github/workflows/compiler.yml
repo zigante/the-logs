@@ -1,0 +1,40 @@
+name: Compiler
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  compiler:
+    name: Compiling project
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Checkout code and configure environment
+      - uses: actions/checkout@v2
+      - name: Configuring environment
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: |
+          node -v
+          npm i -g npm@latest
+          npm -v
+      - name: Installing Dependencies
+      - run: |
+          rm -rf node_modules
+          npm ci
+      - name: Linting Project
+      - run: |
+          npx prettier ./src/**/*.ts --write
+          npx eslint ./src/**/*.ts
+      - name: Compiling Project
+      - run: |
+          rm -rf build
+          tsc -p .
+          npx tsc-alias
+          mv build/src/* build/
+          rm -rf build/package.json build/src/

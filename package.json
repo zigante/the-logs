@@ -1,13 +1,13 @@
 {
-  "name": "@zigtech/logger",
-  "version": "0.1.1",
-  "private": "true",
-  "description": "Simple logs API for your daily process.",
+  "name": "the-logs",
+  "version": "1.0.0",
+  "description": "STOP using console and use this simple logs API for your daily process.",
   "keywords": [
     "log",
     "logger",
     "console",
     "write",
+    "writer",
     "log-level",
     "logLevel"
   ],
@@ -26,19 +26,19 @@
     "postcompile": "mv build/src/* build/ && rm -rf build/package.json build/src/"
   },
   "devDependencies": {
-    "@types/node": "12.19.12",
-    "@typescript-eslint/eslint-plugin": "4.13.0",
-    "@typescript-eslint/parser": "4.13.0",
-    "eslint": "7.17.0",
+    "@types/node": "12.19.16",
+    "@typescript-eslint/eslint-plugin": "4.14.2",
+    "@typescript-eslint/parser": "4.14.2",
+    "eslint": "7.19.0",
     "eslint-plugin-prettier": "3.3.1",
-    "husky": "4.3.7",
+    "husky": "4.3.8",
     "nodemon": "2.0.7",
     "ts-node": "9.1.1",
-    "tsc-alias": "1.2.2",
+    "tsc-alias": "1.2.6",
     "tsconfig-paths": "3.9.0",
     "typescript": "4.1.3"
   },
   "dependencies": {
-    "chalk": "^4.1.0"
+    "chalk": "4.1.0"
   }
 }
