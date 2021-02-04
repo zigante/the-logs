@@ -38,8 +38,10 @@ jobs:
           mv build/src/* build/
           rm -rf build/package.json build/src/
       - name: Publishing on npm
+        with:
+          registry-url: 'https://registry.npmjs.org'
         run: |
           npm publish --access public
         env:
-          registry-url: 'https://registry.npmjs.org'
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
