@@ -15,18 +15,19 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: node -v
-      - run: npm i -g npm@latest
-      - run: npm -v
-      - name: Installing Dependencies
-      - run: rm -rf node_modules
-      - run: npm ci
-      - name: Linting Project
-      - run: npx prettier ./src/**/*.ts --write
-      - run: npx eslint ./src/**/*.ts
-      - name: Compiling Project
-      - run: rm -rf build
-      - run: tsc -p .
-      - run: npx tsc-alias
-      - run: mv build/src/* build/
-      - run: rm -rf build/package.json build/src/
+        run: |
+          node -v
+          npm i -g npm@latest
+          npm -v
+      # - name: Installing Dependencies
+      # - run: rm -rf node_modules
+      # - run: npm ci
+      # - name: Linting Project
+      # - run: npx prettier ./src/**/*.ts --write
+      # - run: npx eslint ./src/**/*.ts
+      # - name: Compiling Project
+      # - run: rm -rf build
+      # - run: tsc -p .
+      # - run: npx tsc-alias
+      # - run: mv build/src/* build/
+      # - run: rm -rf build/package.json build/src/
