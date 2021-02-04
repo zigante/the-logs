@@ -9,6 +9,7 @@ src/
 # configs
 .editorconfig
 .eslintignore
+.eslintrc.yml
 .huskyrc.yml
 .lintstagedrc.yml
 .prettierrc.yml

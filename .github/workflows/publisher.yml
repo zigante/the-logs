@@ -40,4 +40,4 @@ jobs:
           rm -rf build/package.json build/src/
       - name: Publishing on npm
         run: |
-          npm publish
+          npm publish --access public
