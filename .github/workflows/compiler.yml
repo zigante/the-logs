@@ -15,7 +15,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: |
+      - name: Checking version
+        run: |
           node -v
           npm i -g npm@latest
           npm -v
