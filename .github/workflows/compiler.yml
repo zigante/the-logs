@@ -19,9 +19,10 @@ jobs:
           node -v
           npm i -g npm@latest
           npm -v
-      # - name: Installing Dependencies
-      # - run: rm -rf node_modules
-      # - run: npm ci
+      - name: Installing Dependencies
+        run: |
+          rm -rf node_modules
+          npm ci
       # - name: Linting Project
       # - run: npx prettier ./src/**/*.ts --write
       # - run: npx eslint ./src/**/*.ts
