@@ -1,9 +1,11 @@
-name: Compiler
+name: Publisher
 
-on: push
+on:
+  push:
+    branches: [main]
 
 jobs:
-  compiler:
+  publisher:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -15,6 +17,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
       - name: Checking version
         run: |
           node -v
@@ -35,3 +38,6 @@ jobs:
           npx tsc-alias
           mv build/src/* build/
           rm -rf build/package.json build/src/
+      - name: Publishing on npm
+        run: |
+          npm publish

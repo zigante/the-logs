@@ -13,6 +13,10 @@
   ],
   "author": "Zigtech IT Team",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zigante/the-logs.git"
+  },
   "main": "build/index.js",
   "scripts": {
     "dev": "npx nodemon --ext \"ts,json\" --exec \"npx ts-node -r tsconfig-paths/register debug/index.ts\"",
