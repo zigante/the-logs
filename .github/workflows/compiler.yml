@@ -6,7 +6,6 @@ on:
 
 jobs:
   compiler:
-    name: Compiling project
     runs-on: ubuntu-latest
     strategy:
       matrix:
