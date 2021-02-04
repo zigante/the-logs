@@ -22,8 +22,8 @@
     "postcheckout": "npm run beautify",
     "postinstall": "npm run beautify",
     "precompile": "rm -rf build",
-    "compile": "tsc -p .",
-    "postcompile": "npx tsc-alias && rm -rf build/package.json && mv build/src build"
+    "compile": "tsc -p . && npx tsc-alias",
+    "postcompile": "mv build/src/* build/ && rm -rf build/package.json build/src/"
   },
   "devDependencies": {
     "@types/node": "12.19.12",

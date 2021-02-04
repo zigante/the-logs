@@ -23,5 +23,15 @@
     "types": ["node"],
     "lib": ["ES6"]
   },
-  "exclude": ["node_modules/**/*", ".serverless/**/*", ".webpack/**/*", "_warmup/**/*", ".vscode/**/*", "dist/**/*"]
+  "include": ["src/**/*", "package.json"],
+  "exclude": [
+    "node_modules/**/*",
+    ".serverless/**/*",
+    ".webpack/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*",
+    "dist/**/*",
+    "build/**/*",
+    "debug/**/*"
+  ]
 }

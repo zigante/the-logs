@@ -74,11 +74,13 @@ export class AbstractLogger implements Types.ILogger {
     return _params;
   }
 
-  private allowLog = (level: Types.LogLevel) =>
-    (Types.LogLevelNumber[(this._temporaryConfigs || this._configs).logLevel || Types.LogLevel.Debug] ?? this._level) <=
-    Types.LogLevelNumber[level];
+  private allowLog = (level: Types.LogLevel) => {
+    const innerConfigs = this._temporaryConfigs || this._configs;
+    const innerLevel = innerConfigs.logLevel || Types.LogLevel.Debug;
+    return (Types.LogLevelNumber[innerLevel] ?? this._level) <= Types.LogLevelNumber[level];
+  };
 
   private getProps = (): Types.ILoggerBuilderProps => ({ ...this._props, ...this._temporaryConfigs });
 
-  setConfigs = (params?: Types.ILoggerParams) => (this._temporaryConfigs = { ...this._configs, ...(params || {}) });
+  setConfigs = (params: Types.ILoggerParams = {}) => (this._temporaryConfigs = { ...this._configs, ...params });
 }
