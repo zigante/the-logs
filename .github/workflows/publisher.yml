@@ -1,11 +1,9 @@
-name: Publisher
+name: Compiler
 
-on:
-  push:
-    branches: [main]
+on: push
 
 jobs:
-  publisher:
+  compiler:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,20 +15,21 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: |
+      - name: Checking version
+        run: |
           node -v
           npm i -g npm@latest
           npm -v
       - name: Installing Dependencies
-      - run: |
+        run: |
           rm -rf node_modules
           npm ci
       - name: Linting Project
-      - run: |
+        run: |
           npx prettier ./src/**/*.ts --write
           npx eslint ./src/**/*.ts
       - name: Compiling Project
-      - run: |
+        run: |
           rm -rf build
           tsc -p .
           npx tsc-alias
