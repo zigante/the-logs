@@ -10,7 +10,6 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - name: Checkout code and configure environment
       - uses: actions/checkout@v2
       - name: Configuring environment
       - uses: actions/setup-node@v2
