@@ -5,6 +5,6 @@ export interface ILoggerBuilderProps extends ILoggerParams {
   writers?: Writer[];
   serviceName?: string;
   serviceVersion?: string;
-  plataform?: Platform;
-  environment?: Environment;
+  plataform?: Platform | string;
+  environment?: Environment | string;
 }
