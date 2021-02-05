@@ -43,6 +43,7 @@ Logger.buildLogger({
 ```ts
 // This code goes in any file of your project
 // Creates your logger object
+
 let logger = Logger.getLogger({ interUseCase: 'First logs wave' });
 logger.debug('This is a debug log'); // [servce-name@1.0.0][My example][First logs wave] - [Debug] This is a debug log
 logger.info('This is an info log'); // [servce-name@1.0.0][My example][First logs wave] - [Info] This is an info log
@@ -66,11 +67,11 @@ logger.error('This is an error log'); //
 - [x] Log at console
 - [x] Refactor and use Singleton pattern
 - [x] Add multiple configs to track logs beetwen process
+- [ ] Create platform to display logs
 - [ ] Create metrics using logs
 - [ ] Create custom metrics
-- [ ] Log using notifications
-- [ ] Log at ElasticSearch
-- [ ] Create platform to display logs and metricsts
+- [ ] Add metrics to platform
+- [ ] Use notifications
 
 ### Configs
 
