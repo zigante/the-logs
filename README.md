@@ -38,7 +38,10 @@ Logger.buildLogger({
   environment: process.env.NODE_ENV,
   useCase: 'My example',
 });
+```
 
+```ts
+// This code goes in any file of your project
 // Creates your logger object
 let logger = Logger.getLogger({ interUseCase: 'First logs wave' });
 logger.debug('This is a debug log'); // [servce-name@1.0.0][My example][First logs wave] - [Debug] This is a debug log
