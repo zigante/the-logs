@@ -5,6 +5,7 @@
 debug/
 node_modules/
 src/
+deploy/
 
 # configs
 .editorconfig
