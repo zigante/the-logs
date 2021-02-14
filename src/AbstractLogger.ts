@@ -1,5 +1,5 @@
 import * as Types from './types';
-import { WriterFactory } from './WriterFactory';
+import { Factory as WriterFactory } from './writers';
 
 export class AbstractLogger implements Types.ILogger {
   private _writers = new Set<Types.IWriter>();

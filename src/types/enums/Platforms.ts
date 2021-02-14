@@ -1,6 +1,8 @@
 export const enum Platform {
-  Serverless = 'Serverless',
-  Container = 'Container',
-  Instance = 'Instance',
-  VM = 'VM',
+  Container = 'container',
+  DOCKER = 'docker',
+  Instance = 'instance',
+  LAMBDA = 'lambda',
+  Serverless = 'serverless',
+  VM = 'vm',
 }

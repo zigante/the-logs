@@ -1,12 +1,12 @@
 import chalk from 'chalk';
-import { MessageGetter } from '../MessageGetter';
 import { ILoggerBuilderProps, IMessageParams, IWriter, LogLevel } from '../types';
+import { MessageAsString } from '../utils';
 
 export class ConsoleWriter implements IWriter {
   async log(params: IMessageParams, props: ILoggerBuilderProps) {
     const { logLevel = LogLevel.Debug } = props;
     const color = this._colorByLevel[logLevel];
-    const message = MessageGetter(params, props);
+    const message = MessageAsString(params, props);
 
     console.log(color(message));
   }

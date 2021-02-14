@@ -1,7 +1,8 @@
 export const enum Environment {
-  Beta = 'Beta',
-  Development = 'Development',
-  Homolog = 'Development',
-  Stable = 'Development',
-  Testing = 'Development',
+  Beta = 'beta',
+  Development = 'development',
+  Homolog = 'homolog',
+  Stable = 'stable',
+  Test = 'test',
+  Testing = 'testing',
 }

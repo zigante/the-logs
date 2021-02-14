@@ -68,21 +68,22 @@ logger.error('This is an error log'); //
 - [x] Refactor and use Singleton pattern
 - [x] Add multiple configs to track logs beetwen process
 - [ ] Create platform to display logs
+- [ ] Create writer to be consumed by platform
 - [ ] Create metrics using logs
 - [ ] Create custom metrics
-- [ ] Add metrics to platform
-- [ ] Use notifications
+- [ ] Create notifications system
 
 ### Configs
 
-| LogLevel |     | Environment |     | Platform   |     | Writers |
-| -------- | --- | ----------- | --- | ---------- | --- | ------- |
-| Debug    |     | Beta        |     | Serverless |     | Console |
-| Info     |     | Development |     | Lambda     |     | -       |
-| Notice   |     | Production  |     | Container  |     | -       |
-| Warning  |     | Stable      |     | Docker     |     | -       |
-| Error    |     | Staging     |     | VM         |     | -       |
-| Critical |     | Testing     |     | Instance   |     | -       |
+| LogLevel |     | Environment |     | Platform   |     | Writers  |
+| -------- | --- | ----------- | --- | ---------- | --- | -------- |
+| Debug    |     | Beta        |     | Container  |     | Console  |
+| Info     |     | Development |     | Docker     |     | Platform |
+| Notice   |     | Production  |     | Instance   |     | -        |
+| Warning  |     | Stable      |     | Lambda     |     | -        |
+| Error    |     | Staging     |     | Serverless |     | -        |
+| Critical |     | Test        |     | VM         |     | -        |
+| -        |     | Testing     |     | -          |     | -        |
 
 ### LogLevel Hierarchy
 

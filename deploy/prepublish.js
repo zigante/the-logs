@@ -9,11 +9,8 @@ fs.writeFile(CACHED_PKG_PATH, JSON.stringify(pkgData), err => {
   if (err) throw err;
 });
 
-Object.keys(pkgData.scripts).forEach(scriptName => {
-  if (!['prepublish', 'postpublish'].includes(scriptName)) delete pkgData.scripts[scriptName];
-});
-
 delete pkgData.devDependencies;
+delete pkgData.scripts;
 
 fs.writeFile(ORIG_PKG_PATH, JSON.stringify(pkgData, null, 2), err => {
   if (err) throw err;

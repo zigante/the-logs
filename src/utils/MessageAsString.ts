@@ -1,6 +1,6 @@
-import { ILoggerBuilderProps, IMessageParams } from './types';
+import { ILoggerBuilderProps, IMessageParams } from '../types';
 
-export const MessageGetter = (messageParams: IMessageParams, props: ILoggerBuilderProps): string => {
+export const MessageAsString = (messageParams: IMessageParams, props: ILoggerBuilderProps): string => {
   const profile = getProfile(props);
   const { message, interUseCase, useCase, logLevel } = { ...props, ...messageParams };
   const logInfos = [];

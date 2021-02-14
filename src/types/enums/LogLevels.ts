@@ -1,10 +1,10 @@
 export const enum LogLevel {
-  Debug = 'Debug',
-  Info = 'Info',
-  Notice = 'Notice',
-  Warning = 'Warning',
-  Error = 'Error',
-  Critical = 'Critical',
+  Debug = 'debug',
+  Info = 'info',
+  Notice = 'notice',
+  Warning = 'warning',
+  Error = 'error',
+  Critical = 'critical',
 }
 
 export const LogLevelNumber: Record<LogLevel, number> = {
