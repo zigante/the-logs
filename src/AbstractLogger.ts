@@ -14,7 +14,7 @@ export class AbstractLogger implements Types.ILogger {
 
     this._level = Types.LogLevelNumber[logLevel];
     writers.forEach(writer => {
-      const writerInstance = WriterFactory.getWriter(writer);
+      const writerInstance = WriterFactory.getWriter(writer, _props);
       this._writers.add(writerInstance);
     });
   }
