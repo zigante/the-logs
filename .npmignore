@@ -24,3 +24,6 @@ deploy/
 bitbucket-pipelines.yml
 tsconfig.json
 tsconfig.paths.json
+
+#logs
+*.log

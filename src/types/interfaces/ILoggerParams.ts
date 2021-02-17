@@ -4,4 +4,5 @@ export interface ILoggerParams {
   logLevel?: LogLevel;
   useCase?: string;
   interUseCase?: string;
+  filePath?: string;
 }
