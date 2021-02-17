@@ -4,6 +4,7 @@ Stop using `console.log` and use this simple logs API at your daily proccess
 
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
+[![Build][build-badge]][repository-url]
 
 ### Instalation
 
@@ -95,3 +96,5 @@ Critical > Error > Warning > Notice > Info > Debug
 [npm-url]: https://npmjs.org/package/the-logs
 [downloads-image]: https://img.shields.io/npm/dm/the-logs.svg
 [downloads-url]: https://npmcharts.com/compare/the-logs?minimal=true
+[build-badge]: https://github.com/zigante/the-logs/workflows/Compiler/badge.svg?branch=main
+[repository-url]: https://github.com/zigante/the-logs#readme

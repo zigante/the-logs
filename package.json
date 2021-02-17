@@ -1,6 +1,6 @@
 {
   "name": "the-logs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Stop using console.log and use this simple logs API for your daily proccess.",
   "keywords": [
     "log",
