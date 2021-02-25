@@ -6,7 +6,7 @@ Stop using `console.log` and use this simple logs API at your daily proccess
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Build][build-badge]][repository-url]
 
-### Instalation
+### Installation
 
 This is a [Node.js](https://nodejs.org/en/) module available through the
 [npm registry](https://www.npmjs.com/).
@@ -30,11 +30,10 @@ $ npm install --save the-logs
 // This code goes before your application entry point
 
 import { Logger, LogLevel } from 'the-logs';
-import { version as serviceVersion, name as serviceName } from '../package.json';
 
 Logger.buildLogger({
-  serviceName,
-  serviceVersion,
+  serviceName: 'service-name',
+  serviceVersion: '1.0.0',
   logLevel: LogLevel.Debug,
   environment: process.env.NODE_ENV,
   useCase: 'My example',
@@ -46,21 +45,21 @@ Logger.buildLogger({
 // Creates your logger object
 
 let logger = Logger.getLogger({ interUseCase: 'First logs wave' });
-logger.debug('This is a debug log'); // [servce-name@1.0.0][My example][First logs wave] - [Debug] This is a debug log
-logger.info('This is an info log'); // [servce-name@1.0.0][My example][First logs wave] - [Info] This is an info log
-logger.error('This is an error log'); // [servce-name@1.0.0][My example][First logs wave] - [Error] This is an error log
+logger.debug('This is a debug log'); // [service-name@1.0.0][My example][First logs wave] - [Debug] This is a debug log
+logger.info('This is an info log'); // [service-name@1.0.0][My example][First logs wave] - [Info] This is an info log
+logger.error('This is an error log'); // [service-name@1.0.0][My example][First logs wave] - [Error] This is an error log
 
 // Updates your logger with other log level
-logger = Logger.getLogger({ interUseCase: 'Second logs wave', logLevel: LogLevel.Error });
+logger = Logger.getLogger({ logLevel: LogLevel.Error });
 logger.debug('This is a debug log'); //
 logger.info('This is an info log'); //
-logger.error('This is an error log'); // [servce-name@1.0.0][My example][Second logs wave] - [Error] This is an error log
+logger.error('This is an error log'); // [service-name@1.0.0][My example] - [Error] This is an error log
 
-// Updates your logger with other log level
-logger = Logger.getLogger({ interUseCase: 'Last logs wave', logLevel: LogLevel.Critical });
+// Updates your logger with other log level and add an interUseCase
+logger = Logger.getLogger({ interUseCase: 'Last logs wave', logLevel: LogLevel.Info });
 logger.debug('This is a debug log'); //
-logger.info('This is an info log'); //
-logger.error('This is an error log'); //
+logger.info('This is an info log'); // [service-name@1.0.0][My example][Last logs wave] - [Info] This is an info log
+logger.error('This is an error log'); // [service-name@1.0.0][My example][Last logs wave] - [Error] This is an error log
 ```
 
 ### Features
