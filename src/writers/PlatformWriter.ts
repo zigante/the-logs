@@ -8,7 +8,10 @@ export class PlatformWriter implements IWriter {
     const endpoint = this._endpointByLevel[logLevel];
     const body = { ...props, ...params };
 
-    axios.post(endpoint, { method: 'POST', body, headers: { 'The-Logs-X': 'my-context-uuid' } }).catch(console.log);
+    axios
+      .post(endpoint, { method: 'POST', body, headers: { 'The-Logs-X': 'my-context-uuid' } })
+      .then(({ data, headers, status, statusText }) => console.log({ data, headers, status, statusText }))
+      .catch(({ message }) => console.log({ message }));
   }
 
   private _endpointByLevel: Record<LogLevel, string> = {
