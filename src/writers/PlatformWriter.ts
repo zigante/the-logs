@@ -9,7 +9,7 @@ export class PlatformWriter implements IWriter {
     const body = { ...props, ...params };
 
     axios
-      .post(endpoint, { method: 'POST', body, headers: { 'The-Logs-X': 'my-context-uuid' } })
+      .post(endpoint, { method: 'POST', body, headers: { 'X-The-Logs-Token': 'my-context-uuid' } })
       .then(({ data, headers, status, statusText }) => console.log({ data, headers, status, statusText }))
       .catch(({ message }) => console.log({ message }));
   }
