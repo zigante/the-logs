@@ -1,5 +1,5 @@
 export enum Writer {
-  CONSOLE,
-  FILE,
-  PLATFORM,
+  CONSOLE = 'console',
+  FILE = 'file',
+  PLATFORM = 'platform',
 }

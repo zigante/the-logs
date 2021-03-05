@@ -87,8 +87,6 @@ export class AbstractLogger implements Types.ILogger {
   private async write(message: Types.IMessageParams, props: Types.ILoggerBuilderProps) {
     const writers = this._writers.values();
 
-    for (const writer of writers) {
-      await writer.log(message, props);
-    }
+    for (const writer of writers) writer.log(message, props);
   }
 }

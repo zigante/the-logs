@@ -4,14 +4,13 @@ import { ILoggerBuilderProps, IMessageParams, IWriter, LogLevel } from '../types
 
 export class PlatformWriter implements IWriter {
   async log(params: IMessageParams, props: ILoggerBuilderProps) {
-    const { logLevel = LogLevel.Debug } = props;
+    const { logLevel = LogLevel.Debug, token } = props;
+    if (!token) return;
+
     const endpoint = this._endpointByLevel[logLevel];
     const body = { ...props, ...params };
 
-    axios
-      .post(endpoint, { method: 'POST', body, headers: { 'X-The-Logs-Token': 'my-context-uuid' } })
-      .then(({ data, headers, status, statusText }) => console.log({ data, headers, status, statusText }))
-      .catch(({ message }) => console.log({ message }));
+    axios.post(endpoint, { method: 'POST', body }).catch(({ message }) => console.log(message));
   }
 
   private _endpointByLevel: Record<LogLevel, string> = {

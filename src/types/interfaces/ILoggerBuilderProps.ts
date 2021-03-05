@@ -7,4 +7,5 @@ export interface ILoggerBuilderProps extends ILoggerParams {
   serviceVersion?: string;
   plataform?: Platform | string;
   environment?: Environment | string;
+  token?: string;
 }
