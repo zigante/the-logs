@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 import { ILoggerBuilderProps, IMessageParams, IWriter, LogLevel } from '../types';
 
@@ -6,9 +6,10 @@ export class PlatformWriter implements IWriter {
   async log(params: IMessageParams, props: ILoggerBuilderProps) {
     const { logLevel = LogLevel.Debug } = props;
     const endpoint = this._endpointByLevel[logLevel];
-    const body = JSON.stringify({ ...props, ...params }, null, 2);
+    const body = JSON.stringify({ ...props, ...params });
+    console.log(body);
 
-    fetch(endpoint, { method: 'POST', body, headers: { 'The-Logs-X': 'my-context-uuid' } });
+    axios.post(endpoint, { method: 'POST', body, headers: { 'The-Logs-X': 'my-context-uuid' } });
   }
 
   private _endpointByLevel: Record<LogLevel, string> = {

@@ -24,7 +24,7 @@ export class AbstractLogger implements Types.ILogger {
     const logLevel = Types.LogLevel.Debug;
     const props: Types.ILoggerBuilderProps = { ...this.getProps(), logLevel };
 
-    if (this.allowLog(logLevel)) this._writers.forEach(writer => writer.log(message, props));
+    if (this.allowLog(logLevel)) await this.write(message, props);
   }
 
   async notice(params: string | Types.IMessageParams): Promise<void> {
@@ -32,7 +32,7 @@ export class AbstractLogger implements Types.ILogger {
     const logLevel = Types.LogLevel.Notice;
     const props: Types.ILoggerBuilderProps = { ...this.getProps(), logLevel };
 
-    if (this.allowLog(logLevel)) this._writers.forEach(writer => writer.log(message, props));
+    if (this.allowLog(logLevel)) await this.write(message, props);
   }
 
   async info(params: string | Types.IMessageParams): Promise<void> {
@@ -40,7 +40,7 @@ export class AbstractLogger implements Types.ILogger {
     const logLevel = Types.LogLevel.Info;
     const props: Types.ILoggerBuilderProps = { ...this.getProps(), logLevel };
 
-    if (this.allowLog(logLevel)) this._writers.forEach(writer => writer.log(message, props));
+    if (this.allowLog(logLevel)) await this.write(message, props);
   }
 
   async warning(params: string | Types.IMessageParams): Promise<void> {
@@ -48,7 +48,7 @@ export class AbstractLogger implements Types.ILogger {
     const logLevel = Types.LogLevel.Warning;
     const props: Types.ILoggerBuilderProps = { ...this.getProps(), logLevel };
 
-    if (this.allowLog(logLevel)) this._writers.forEach(writer => writer.log(message, props));
+    if (this.allowLog(logLevel)) await this.write(message, props);
   }
 
   async error(params: string | Types.IMessageParams): Promise<void> {
@@ -56,7 +56,7 @@ export class AbstractLogger implements Types.ILogger {
     const logLevel = Types.LogLevel.Error;
     const props: Types.ILoggerBuilderProps = { ...this.getProps(), logLevel };
 
-    if (this.allowLog(logLevel)) this._writers.forEach(writer => writer.log(message, props));
+    if (this.allowLog(logLevel)) await this.write(message, props);
   }
 
   async critical(params: string | Types.IMessageParams): Promise<void> {
@@ -64,7 +64,7 @@ export class AbstractLogger implements Types.ILogger {
     const logLevel = Types.LogLevel.Critical;
     const props: Types.ILoggerBuilderProps = { ...this.getProps(), logLevel };
 
-    if (this.allowLog(logLevel)) this._writers.forEach(writer => writer.log(message, props));
+    if (this.allowLog(logLevel)) await this.write(message, props);
   }
 
   private getMessage(params: string | Types.IMessageParams): Types.IMessageParams {
@@ -83,4 +83,12 @@ export class AbstractLogger implements Types.ILogger {
   private getProps = (): Types.ILoggerBuilderProps => ({ ...this._props, ...this._temporaryConfigs });
 
   setConfigs = (params: Types.ILoggerParams = {}) => (this._temporaryConfigs = { ...this._configs, ...params });
+
+  private async write(message: Types.IMessageParams, props: Types.ILoggerBuilderProps) {
+    const writers = this._writers.values();
+
+    for (const writer of writers) {
+      await writer.log(message, props);
+    }
+  }
 }
